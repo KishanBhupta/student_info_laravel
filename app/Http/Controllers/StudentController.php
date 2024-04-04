@@ -19,11 +19,11 @@ class StudentController extends Controller
                 'address' =>'required',
                 'city' =>'required',
             ]
-            
+
         );
 
         // $hobbieString = implode(', ', $value['hobbies']);
-        
+
         $us = new Student();
         $us->name = $value['name'];
         $us->email = $value['email'];
@@ -40,7 +40,7 @@ class StudentController extends Controller
     function showdata(){
         $studentdata = Student::all();
         // dd($studentdata);
-        
+
         return view('student.home', compact('studentdata'));
     }
 
@@ -75,10 +75,10 @@ class StudentController extends Controller
                 'city' =>'required',
             ]
         );
-        
+
         // $hobbieString = implode(', ', $value['hobbies']);
 
-        
+
 
         $us = Student::find($id);
         $us->name = $value['name'];
@@ -89,12 +89,11 @@ class StudentController extends Controller
         $us->city = $value['city'];
         $us->address = $value['address'];
         $us->save();
-         dd($us);
-        dd($us);
+
         return redirect('/');
     }
 
-    function personaldata($id) { 
+    function personaldata($id) {
         $student = Student::find($id);
         return view('student.personaldata', compact('student'));
     }
